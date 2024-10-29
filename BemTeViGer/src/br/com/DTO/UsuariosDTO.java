@@ -5,7 +5,7 @@ package br.com.DTO;
  */
 public class UsuariosDTO {
     private int id;
-    private String nomeUsu, TipoUsu, SenhaUsu;
+    private String nomeUsu, SenhaUsu;
 
     public int getId() {
         return id;
@@ -21,14 +21,6 @@ public class UsuariosDTO {
 
     public void setNomeUsu(String nomeUsu) {
         this.nomeUsu = nomeUsu;
-    }
-
-    public String getTipoUsu() {
-        return TipoUsu;
-    }
-
-    public void setTipoUsu(String TipoUsu) {
-        this.TipoUsu = TipoUsu;
     }
 
     public String getSenhaUsu() {
