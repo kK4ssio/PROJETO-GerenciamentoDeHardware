@@ -8,7 +8,8 @@ public class ManunDTO {
     private int id;
     private int equipamentoId;
     private int pecaId;
-    private int laboratorioId; 
+    private int laboratorioId;
+    private String problema;
 
     public int getId() {
         return id;
@@ -49,5 +50,5 @@ public class ManunDTO {
     public void setProblema(String problema) {
         this.problema = problema;
     }
-    private String problema;
+
 }

@@ -1,11 +1,10 @@
-CREATE DATABASE bemtevi;
-USE bemtevi;
+CREATE DATABASE beemtevi;
+USE beemtevi;
 
 -- Tabela de usuários
 CREATE TABLE usuario (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome_usuario VARCHAR(100) NOT NULL,
-    tipo_usuario ENUM('admin', 'tecnico', 'estagiario') NOT NULL,
     senha_usuario VARCHAR(8) NOT NULL
 );
 
@@ -21,8 +20,8 @@ CREATE TABLE equipamento (
     tipo_equipamento ENUM('pc', 'notebook', 'mouse', 'teclado', 'fonte', 'cabo') NOT NULL,
     status ENUM('em uso', 'em manutencao', 'fora de uso') NOT NULL,
     observacao VARCHAR(100),
-    laboratorio_id INT NULL, -- Agora opcional, permite NULL
-    identificacao VARCHAR(50) NOT NULL UNIQUE,
+    laboratorio_id INT NULL, 
+    identificacao VARCHAR(50) NOT NULL,
     FOREIGN KEY (laboratorio_id) REFERENCES laboratorio(id) ON DELETE SET NULL
 );
 
