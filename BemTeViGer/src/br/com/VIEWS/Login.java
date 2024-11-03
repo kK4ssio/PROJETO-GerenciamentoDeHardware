@@ -5,15 +5,49 @@
  */
 package br.com.VIEWS;
 
+import java.sql.*;
+import javax.swing.JOptionPane;
+import br.com.DAO.ConexaoDAO;
+import br.com.DAO.UsersDAO;
+
 /**
  *
  * @author aluno.saolucas
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+    
+       Connection conexao = null;
+      PreparedStatement pst = null;
+      ResultSet rs = null;
+    
+    public void Logar() {
+        String sql = "select * from usuario where nome_usuario = ? and senha_usuario = ?";
+        conexao = ConexaoDAO.conector();
+
+        try {
+            
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, txtNomeUsu.getText());
+            pst.setString(2, txtSenha.getText());
+            ;
+
+            //executar  a query
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                Principal principal = new Principal();
+                principal.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválidos.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "tela Login " + e);
+
+        }
+    }
+        
     public Login() {
         initComponents();
     }
@@ -35,7 +69,7 @@ public class Login extends javax.swing.JFrame {
         btnEntrar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtNomeUsu = new javax.swing.JTextField();
-        SenhaUsu = new javax.swing.JPasswordField();
+        txtSenha = new javax.swing.JPasswordField();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,6 +113,11 @@ public class Login extends javax.swing.JFrame {
         btnEntrar.setForeground(new java.awt.Color(255, 211, 0));
         btnEntrar.setText("Entrar");
         btnEntrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(75, 75, 75));
@@ -89,10 +128,10 @@ public class Login extends javax.swing.JFrame {
         txtNomeUsu.setForeground(new java.awt.Color(204, 204, 204));
         txtNomeUsu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        SenhaUsu.setBackground(new java.awt.Color(75, 75, 75));
-        SenhaUsu.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        SenhaUsu.setForeground(new java.awt.Color(204, 204, 204));
-        SenhaUsu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtSenha.setBackground(new java.awt.Color(75, 75, 75));
+        txtSenha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSenha.setForeground(new java.awt.Color(204, 204, 204));
+        txtSenha.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(75, 75, 75));
@@ -115,7 +154,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SenhaUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNomeUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
@@ -129,7 +168,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SenhaUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,6 +191,10 @@ public class Login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        Logar();
+    }//GEN-LAST:event_btnEntrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,7 +232,6 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JPasswordField SenhaUsu;
     private javax.swing.JButton btnEntrar;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
@@ -199,5 +241,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     public static javax.swing.JTextField txtNomeUsu;
+    public static javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

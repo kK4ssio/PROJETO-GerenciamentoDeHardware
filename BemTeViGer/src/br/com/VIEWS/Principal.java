@@ -243,6 +243,11 @@ public class Principal extends javax.swing.JFrame {
     jMenu2.add(mnGerPecas);
 
     mnGerUsers.setText("Usuários");
+    mnGerUsers.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            mnGerUsersActionPerformed(evt);
+        }
+    });
     jMenu2.add(mnGerUsers);
 
     jMenuBar1.add(jMenu2);
@@ -281,6 +286,11 @@ public class Principal extends javax.swing.JFrame {
         newPeca.setVisible(true);
         Desktop.add(newPeca);
     }//GEN-LAST:event_mnPecaActionPerformed
+
+    private void mnGerUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnGerUsersActionPerformed
+       GerUsers ngu = new GerUsers();
+       ngu.setVisible(true);
+    }//GEN-LAST:event_mnGerUsersActionPerformed
 
     /**
      * @param args the command line arguments

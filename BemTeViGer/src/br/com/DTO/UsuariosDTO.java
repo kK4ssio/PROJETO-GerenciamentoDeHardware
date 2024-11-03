@@ -5,7 +5,15 @@ package br.com.DTO;
  */
 public class UsuariosDTO {
     private int id;
-    private String nomeUsu, SenhaUsu;
+    private String nomeUsu, SenhaUsu, TipoUsu;
+
+    public String getTipoUsu() {
+        return TipoUsu;
+    }
+
+    public void setTipoUsu(String TipoUsu) {
+        this.TipoUsu = TipoUsu;
+    }
 
     public int getId() {
         return id;

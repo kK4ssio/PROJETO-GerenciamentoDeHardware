@@ -5,6 +5,9 @@
  */
 package br.com.VIEWS;
 
+import br.com.DAO.UsersDAO;
+import br.com.DTO.UsuariosDTO;
+
 /**
  *
  * @author aluno.saolucas
@@ -35,8 +38,10 @@ public class Cadastro extends javax.swing.JFrame {
         btnCadas = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtNomeUsu = new javax.swing.JTextField();
-        newSenhaUsu = new javax.swing.JPasswordField();
+        txtSenha = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
+        TipoUsu = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -78,24 +83,37 @@ public class Cadastro extends javax.swing.JFrame {
         btnCadas.setBackground(new java.awt.Color(75, 75, 75));
         btnCadas.setForeground(new java.awt.Color(255, 211, 0));
         btnCadas.setText("Cadastrar");
+        btnCadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadasActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(75, 75, 75));
-        jLabel2.setText("Username");
+        jLabel2.setText("Tipo");
 
         txtNomeUsu.setBackground(new java.awt.Color(75, 75, 75));
         txtNomeUsu.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtNomeUsu.setForeground(new java.awt.Color(204, 204, 204));
         txtNomeUsu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        newSenhaUsu.setBackground(new java.awt.Color(75, 75, 75));
-        newSenhaUsu.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        newSenhaUsu.setForeground(new java.awt.Color(204, 204, 204));
-        newSenhaUsu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtSenha.setBackground(new java.awt.Color(75, 75, 75));
+        txtSenha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSenha.setForeground(new java.awt.Color(204, 204, 204));
+        txtSenha.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(75, 75, 75));
         jLabel3.setText("Senha");
+
+        TipoUsu.setBackground(new java.awt.Color(75, 75, 75));
+        TipoUsu.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        TipoUsu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Técnico", "Estagiário" }));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(75, 75, 75));
+        jLabel5.setText("Username");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,19 +122,26 @@ public class Cadastro extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCadas, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newSenhaUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNomeUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addGap(33, 33, 33))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                            .addComponent(txtNomeUsu, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                            .addComponent(TipoUsu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 30, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -127,12 +152,16 @@ public class Cadastro extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNomeUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(33, 33, 33)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newSenhaUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TipoUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCadas, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,6 +182,24 @@ public class Cadastro extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadasActionPerformed
+  
+String nome_usuario = txtNomeUsu.getText();
+String senha = txtSenha.getText();
+String tipo_usuario = TipoUsu.getSelectedItem().toString();
+
+
+UsuariosDTO CDTO = new UsuariosDTO();
+CDTO.setNomeUsu(nome_usuario);
+CDTO.setSenhaUsu(senha);
+CDTO.setTipoUsu(tipo_usuario); // Define o tipo de usuário no DTO
+
+// Cria uma instância do DAO e chama o método para cadastrar o novo usuário
+UsersDAO UDAO = new UsersDAO();
+UDAO.NovoUsu(CDTO); 
+
+    }//GEN-LAST:event_btnCadasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,15 +237,17 @@ public class Cadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JComboBox<String> TipoUsu;
     private javax.swing.JButton btnCadas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
-    public static javax.swing.JPasswordField newSenhaUsu;
     public static javax.swing.JTextField txtNomeUsu;
+    public static javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }
