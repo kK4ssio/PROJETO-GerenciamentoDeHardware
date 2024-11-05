@@ -37,6 +37,8 @@ public class GerLabs extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        mnVolta = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,6 +146,21 @@ public class GerLabs extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 236));
+        jMenuBar1.setBorder(null);
+        jMenuBar1.setForeground(new java.awt.Color(75, 75, 75));
+        jMenuBar1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+
+        mnVolta.setText("Retornar à tela principal");
+        mnVolta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnVoltaMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(mnVolta);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -157,6 +174,13 @@ public class GerLabs extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mnVoltaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnVoltaMouseClicked
+        Principal p = new Principal();
+    
+       p.setVisible(true);
+      dispose();
+    }//GEN-LAST:event_mnVoltaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -197,6 +221,7 @@ public class GerLabs extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -204,5 +229,6 @@ public class GerLabs extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     public static javax.swing.JTable jTable1;
+    private javax.swing.JMenu mnVolta;
     // End of variables declaration//GEN-END:variables
 }

@@ -55,11 +55,9 @@ public class Principal extends javax.swing.JFrame {
     jMenu1 = new javax.swing.JMenu();
     mnLab = new javax.swing.JMenuItem();
     mnEquip = new javax.swing.JMenuItem();
-    mnPeca = new javax.swing.JMenuItem();
     jMenu2 = new javax.swing.JMenu();
     mnGerLabs = new javax.swing.JMenuItem();
     mnGerEquips = new javax.swing.JMenuItem();
-    mnGerPecas = new javax.swing.JMenuItem();
     mnGerUsers = new javax.swing.JMenuItem();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -220,27 +218,26 @@ public class Principal extends javax.swing.JFrame {
     });
     jMenu1.add(mnEquip);
 
-    mnPeca.setText("Peça");
-    mnPeca.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            mnPecaActionPerformed(evt);
-        }
-    });
-    jMenu1.add(mnPeca);
-
     jMenuBar1.add(jMenu1);
 
     jMenu2.setText("Gerenciar");
     jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
     mnGerLabs.setText("Laboratórios");
+    mnGerLabs.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            mnGerLabsActionPerformed(evt);
+        }
+    });
     jMenu2.add(mnGerLabs);
 
     mnGerEquips.setText("Equipamentos");
+    mnGerEquips.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            mnGerEquipsActionPerformed(evt);
+        }
+    });
     jMenu2.add(mnGerEquips);
-
-    mnGerPecas.setText("Peças");
-    jMenu2.add(mnGerPecas);
 
     mnGerUsers.setText("Usuários");
     mnGerUsers.addActionListener(new java.awt.event.ActionListener() {
@@ -281,16 +278,23 @@ public class Principal extends javax.swing.JFrame {
         Desktop.add(newEquip);
     }//GEN-LAST:event_mnEquipActionPerformed
 
-    private void mnPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnPecaActionPerformed
-        NovaPeca newPeca = new NovaPeca();
-        newPeca.setVisible(true);
-        Desktop.add(newPeca);
-    }//GEN-LAST:event_mnPecaActionPerformed
-
     private void mnGerUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnGerUsersActionPerformed
        GerUsers ngu = new GerUsers();
        ngu.setVisible(true);
+       setVisible(false);
     }//GEN-LAST:event_mnGerUsersActionPerformed
+
+    private void mnGerLabsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnGerLabsActionPerformed
+      GerLabs labs = new GerLabs();
+        labs.setVisible(true);
+        setVisible(false); 
+    }//GEN-LAST:event_mnGerLabsActionPerformed
+
+    private void mnGerEquipsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnGerEquipsActionPerformed
+         GerEquips equips = new GerEquips();
+        equips.setVisible(true);
+        setVisible(false); 
+    }//GEN-LAST:event_mnGerEquipsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -344,9 +348,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnEquip;
     private javax.swing.JMenuItem mnGerEquips;
     private javax.swing.JMenuItem mnGerLabs;
-    private javax.swing.JMenuItem mnGerPecas;
     private javax.swing.JMenuItem mnGerUsers;
     private javax.swing.JMenuItem mnLab;
-    private javax.swing.JMenuItem mnPeca;
     // End of variables declaration//GEN-END:variables
 }

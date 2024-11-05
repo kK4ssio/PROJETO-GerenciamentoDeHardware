@@ -199,6 +199,9 @@ CDTO.setTipoUsu(tipo_usuario); // Define o tipo de usuário no DTO
 UsersDAO UDAO = new UsersDAO();
 UDAO.NovoUsu(CDTO); 
 
+Login l = new Login();
+l.setVisible(true);
+setVisible(false); 
     }//GEN-LAST:event_btnCadasActionPerformed
 
     /**
