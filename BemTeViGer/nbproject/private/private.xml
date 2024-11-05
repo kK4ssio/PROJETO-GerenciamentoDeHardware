@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/aluno.saolucas/Desktop/PROJETO-GerenciamentoDeHardware/BemTeViGer/src/br/com/VIEWS/Cadastro.java</file>
-            <file>file:/C:/Users/aluno.saolucas/Desktop/PROJETO-GerenciamentoDeHardware/BemTeViGer/src/br/com/VIEWS/NovaPeca.java</file>
-            <file>file:/C:/Users/aluno.saolucas/Desktop/PROJETO-GerenciamentoDeHardware/BemTeViGer/src/br/com/VIEWS/Principal.java</file>
-            <file>file:/C:/Users/aluno.saolucas/Desktop/PROJETO-GerenciamentoDeHardware/BemTeViGer/src/br/com/VIEWS/Login.java</file>
+            <file>file:/C:/Users/aluno.saolucas/Desktop/PROJETO-GerenciamentoDeHardware/BemTeViGer/src/br/com/DTO/UsuariosDTO.java</file>
             <file>file:/C:/Users/aluno.saolucas/Desktop/PROJETO-GerenciamentoDeHardware/BemTeViGer/src/br/com/VIEWS/GerUsers.java</file>
+            <file>file:/C:/Users/aluno.saolucas/Desktop/PROJETO-GerenciamentoDeHardware/BemTeViGer/src/br/com/DAO/UsersDAO.java</file>
+            <file>file:/C:/Users/aluno.saolucas/Desktop/PROJETO-GerenciamentoDeHardware/BemTeViGer/src/br/com/VIEWS/Cadastro.java</file>
         </group>
     </open-files>
 </project-private>

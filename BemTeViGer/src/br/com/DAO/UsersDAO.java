@@ -5,6 +5,8 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import br.com.VIEWS.Cadastro;
 import br.com.VIEWS.GerUsers;
+import br.com.VIEWS.Login;
+
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,22 +32,24 @@ public class UsersDAO {
 
             pst.execute();
 
-         
             JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
-            LimpaCampos();
+
+            Login l = new Login();
+            l.setVisible(true);
 
             pst.close();
 
         } catch (Exception e) {
             if (e.getMessage().contains("'usuario.username'")) {
-                JOptionPane.showMessageDialog(null, "Login já existente, usuário não foi inserido.");
+
                 LimpaCampos();
             }
             JOptionPane.showMessageDialog(null, e);
         }
 
     }
-     public void pesquisaAuto() {
+
+    public void pesquisaAuto() {
         String sql = "select * from usuario";
         Connection conexao = ConexaoDAO.conector();
 
@@ -60,15 +64,14 @@ public class UsersDAO {
 
                 while (rs.next()) {
 
-		    int id = rs.getInt("id");
+                    int id = rs.getInt("id");
 
                     String nome = rs.getString("nome_usuario");
-                    
+
                     String tipo = rs.getString("tipo_usuario");
-                    
+
                     String senha = rs.getString("senha_usuario");
 
-        
                     model.addRow(new Object[]{id, nome, tipo, senha});
                 }
 
@@ -82,7 +85,6 @@ public class UsersDAO {
 
         }
     }
-    
 
     public void ApagaUsu(UsuariosDTO objUsuaDTO) {
         String sql = "delete from usuario where id = ?";
@@ -104,7 +106,7 @@ public class UsersDAO {
             }
 
         } catch (Exception e) {
-          
+
         }
     }
 
@@ -132,13 +134,13 @@ public class UsersDAO {
             }
 
         } catch (Exception e) {
-           
+
         }
 
     }
-    
-     public void Procura(UsuariosDTO objUsuaDTO) {
-             
+
+    public void Procura(UsuariosDTO objUsuaDTO) {
+
         String sql = "select * from usuario where id = ?";
         conexao = ConexaoDAO.conector();
 
@@ -148,15 +150,15 @@ public class UsersDAO {
             rs = pst.executeQuery();
 
             if (rs.next()) {
-            objUsuaDTO.setNomeUsu(rs.getString("nome_usuario"));
-            objUsuaDTO.setSenhaUsu(rs.getString("senha_usuario"));
-            objUsuaDTO.setTipoUsu(rs.getString("tipo_usuario"));
-              
+                objUsuaDTO.setNomeUsu(rs.getString("nome_usuario"));
+                objUsuaDTO.setSenhaUsu(rs.getString("senha_usuario"));
+                objUsuaDTO.setTipoUsu(rs.getString("tipo_usuario"));
+
                 conexao.close();
 
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario não existe");
-               LimpaCampos();
+                LimpaCampos();
             }
 
         } catch (Exception e) {
@@ -164,7 +166,6 @@ public class UsersDAO {
         }
 
     }
-        
 
     public void LimpaCampos() {
         Cadastro.txtNomeUsu.setText(null);

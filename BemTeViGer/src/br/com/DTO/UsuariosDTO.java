@@ -4,6 +4,7 @@ package br.com.DTO;
  * @author Kassio Dias Monteiro
  */
 public class UsuariosDTO {
+
     private int id;
     private String nomeUsu, SenhaUsu, TipoUsu;
 

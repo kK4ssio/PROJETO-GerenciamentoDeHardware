@@ -83,6 +83,7 @@ public class Cadastro extends javax.swing.JFrame {
         btnCadas.setBackground(new java.awt.Color(75, 75, 75));
         btnCadas.setForeground(new java.awt.Color(255, 211, 0));
         btnCadas.setText("Cadastrar");
+        btnCadas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
         btnCadas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadasActionPerformed(evt);
@@ -184,24 +185,20 @@ public class Cadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadasActionPerformed
-  
-String nome_usuario = txtNomeUsu.getText();
-String senha = txtSenha.getText();
-String tipo_usuario = TipoUsu.getSelectedItem().toString();
 
+        String nome_usuario = txtNomeUsu.getText();
+        String senha = txtSenha.getText();
+        String tipo_usuario = TipoUsu.getSelectedItem().toString();
 
-UsuariosDTO CDTO = new UsuariosDTO();
-CDTO.setNomeUsu(nome_usuario);
-CDTO.setSenhaUsu(senha);
-CDTO.setTipoUsu(tipo_usuario); // Define o tipo de usuário no DTO
+        UsuariosDTO CDTO = new UsuariosDTO();
+        CDTO.setNomeUsu(nome_usuario);
+        CDTO.setSenhaUsu(senha);
+        CDTO.setTipoUsu(tipo_usuario);
 
-// Cria uma instância do DAO e chama o método para cadastrar o novo usuário
-UsersDAO UDAO = new UsersDAO();
-UDAO.NovoUsu(CDTO); 
+        UsersDAO UDAO = new UsersDAO();
+        UDAO.NovoUsu(CDTO);
 
-Login l = new Login();
-l.setVisible(true);
-setVisible(false); 
+        this.dispose();
     }//GEN-LAST:event_btnCadasActionPerformed
 
     /**
