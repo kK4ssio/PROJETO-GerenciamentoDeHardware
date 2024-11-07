@@ -5,6 +5,9 @@
  */
 package br.com.VIEWS;
 
+import br.com.DAO.LabDAO;
+import br.com.DTO.LabsDTO;
+
 /**
  *
  * @author aluno.saolucas
@@ -29,11 +32,11 @@ public class NovoLab extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnRegisLab = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNomeLab = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
 
         setClosable(true);
@@ -43,12 +46,17 @@ public class NovoLab extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(75, 75, 75));
 
-        jButton1.setBackground(new java.awt.Color(75, 75, 75));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 211, 0));
-        jButton1.setText("Registrar Laboratório");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegisLab.setBackground(new java.awt.Color(75, 75, 75));
+        btnRegisLab.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnRegisLab.setForeground(new java.awt.Color(255, 211, 0));
+        btnRegisLab.setText("Registrar Laboratório");
+        btnRegisLab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
+        btnRegisLab.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegisLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisLabActionPerformed(evt);
+            }
+        });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/new-lab.png"))); // NOI18N
 
@@ -60,7 +68,7 @@ public class NovoLab extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegisLab, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -68,7 +76,7 @@ public class NovoLab extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(34, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegisLab, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(16, 16, 16))
         );
@@ -81,10 +89,10 @@ public class NovoLab extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(75, 75, 75));
         jLabel2.setText("Nome da sala");
 
-        jTextField1.setBackground(new java.awt.Color(75, 75, 75));
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtNomeLab.setBackground(new java.awt.Color(75, 75, 75));
+        txtNomeLab.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtNomeLab.setForeground(new java.awt.Color(204, 204, 204));
+        txtNomeLab.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -98,7 +106,7 @@ public class NovoLab extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1)))
+                        .addComponent(txtNomeLab)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(225, Short.MAX_VALUE)
@@ -115,7 +123,7 @@ public class NovoLab extends javax.swing.JInternalFrame {
                 .addGap(104, 104, 104)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNomeLab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -134,15 +142,25 @@ public class NovoLab extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegisLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisLabActionPerformed
+String  nome_laboratorio =  txtNomeLab.getText();
+  
+LabsDTO CDTO = new LabsDTO();
+CDTO.setNomeLab(nome_laboratorio);
+
+LabDAO UDAO = new LabDAO();
+UDAO.NovoLabs(CDTO); 
+    }//GEN-LAST:event_btnRegisLabActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnRegisLab;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
+    public static javax.swing.JTextField txtNomeLab;
     // End of variables declaration//GEN-END:variables
 }
