@@ -57,6 +57,8 @@ public class GerUsers extends javax.swing.JFrame {
         mnRetornar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gerenciar Usuários");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -115,9 +117,9 @@ public class GerUsers extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(29, 29, 29))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 250, 206));
@@ -167,6 +169,7 @@ public class GerUsers extends javax.swing.JFrame {
         btnEditar.setBackground(new java.awt.Color(75, 75, 75));
         btnEditar.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(204, 204, 204));
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/editar.png"))); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
         btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -179,6 +182,7 @@ public class GerUsers extends javax.swing.JFrame {
         btnApaga.setBackground(new java.awt.Color(75, 75, 75));
         btnApaga.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnApaga.setForeground(new java.awt.Color(204, 204, 204));
+        btnApaga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/excluir.png"))); // NOI18N
         btnApaga.setText("Excluir");
         btnApaga.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
         btnApaga.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -203,6 +207,7 @@ public class GerUsers extends javax.swing.JFrame {
         btnPesq.setBackground(new java.awt.Color(75, 75, 75));
         btnPesq.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnPesq.setForeground(new java.awt.Color(204, 204, 204));
+        btnPesq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.png"))); // NOI18N
         btnPesq.setText("Procurar");
         btnPesq.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
         btnPesq.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -296,7 +301,7 @@ public class GerUsers extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -343,6 +348,7 @@ public class GerUsers extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegarregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegarregaActionPerformed

@@ -170,7 +170,6 @@ public class UsersDAO {
     public void LimpaCampos() {
         Cadastro.txtNomeUsu.setText(null);
         Cadastro.txtSenha.setText(null);
-        Cadastro.TipoUsu.setSelectedIndex(0);
         GerUsers.txtID.setText(null);
         GerUsers.txtNome.setText(null);
         GerUsers.txtSenha.setText(null);

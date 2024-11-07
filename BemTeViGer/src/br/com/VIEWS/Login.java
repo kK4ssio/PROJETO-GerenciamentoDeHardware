@@ -75,6 +75,7 @@ public class Login extends javax.swing.JFrame {
         lblCadas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("bem-te-vi! Login");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 236));
