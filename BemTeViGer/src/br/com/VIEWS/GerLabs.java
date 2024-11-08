@@ -6,6 +6,8 @@
 package br.com.VIEWS;
 
 import br.com.DAO.UsersDAO;
+import br.com.DAO.labsDAO;
+import br.com.DTO.LabsDTO;
 
 /**
  *
@@ -32,7 +34,7 @@ public class GerLabs extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TabelaLabs = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -42,10 +44,10 @@ public class GerLabs extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnRegarrega = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        txtNomeLab = new javax.swing.JTextField();
+        txtIdLab = new javax.swing.JTextField();
+        btnPesqLab = new javax.swing.JButton();
+        btnExcLab = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnVolta = new javax.swing.JMenu();
@@ -58,23 +60,23 @@ public class GerLabs extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 236));
 
-        jTable1.setBackground(new java.awt.Color(255, 250, 206));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaLabs.setBackground(new java.awt.Color(255, 250, 206));
+        TabelaLabs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "id", "Sala", "Num. de máquinas"
+                "id", "Sala"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -85,8 +87,8 @@ public class GerLabs extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setGridColor(new java.awt.Color(75, 75, 75));
-        jScrollPane1.setViewportView(jTable1);
+        TabelaLabs.setGridColor(new java.awt.Color(75, 75, 75));
+        jScrollPane1.setViewportView(TabelaLabs);
 
         jPanel3.setBackground(new java.awt.Color(75, 75, 75));
 
@@ -138,6 +140,7 @@ public class GerLabs extends javax.swing.JFrame {
         btnRegarrega.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnRegarrega.setForeground(new java.awt.Color(204, 204, 204));
         btnRegarrega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recarrega.png"))); // NOI18N
+        btnRegarrega.setToolTipText("Atualizar");
         btnRegarrega.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 2));
         btnRegarrega.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegarrega.addActionListener(new java.awt.event.ActionListener() {
@@ -150,39 +153,46 @@ public class GerLabs extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(75, 75, 75));
         jLabel5.setText("Sala");
 
-        jTextField2.setBackground(new java.awt.Color(75, 75, 75));
-        jTextField2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtNomeLab.setBackground(new java.awt.Color(75, 75, 75));
+        txtNomeLab.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtNomeLab.setForeground(new java.awt.Color(204, 204, 204));
+        txtNomeLab.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField1.setBackground(new java.awt.Color(75, 75, 75));
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtIdLab.setBackground(new java.awt.Color(75, 75, 75));
+        txtIdLab.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtIdLab.setForeground(new java.awt.Color(204, 204, 204));
+        txtIdLab.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtIdLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtIdLabActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(75, 75, 75));
-        jButton2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(204, 204, 204));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.png"))); // NOI18N
-        jButton2.setText("Pesquisar");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jButton3.setBackground(new java.awt.Color(75, 75, 75));
-        jButton3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(204, 204, 204));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/excluir.png"))); // NOI18N
-        jButton3.setText("Excluir Laboratório");
-        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnPesqLab.setBackground(new java.awt.Color(75, 75, 75));
+        btnPesqLab.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnPesqLab.setForeground(new java.awt.Color(204, 204, 204));
+        btnPesqLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.png"))); // NOI18N
+        btnPesqLab.setText("Pesquisar");
+        btnPesqLab.setToolTipText("Pesquisar");
+        btnPesqLab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
+        btnPesqLab.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPesqLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnPesqLabActionPerformed(evt);
+            }
+        });
+
+        btnExcLab.setBackground(new java.awt.Color(75, 75, 75));
+        btnExcLab.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnExcLab.setForeground(new java.awt.Color(204, 204, 204));
+        btnExcLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/excluir.png"))); // NOI18N
+        btnExcLab.setText("Excluir Laboratório");
+        btnExcLab.setToolTipText("Excluir Laboratório");
+        btnExcLab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
+        btnExcLab.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcLabActionPerformed(evt);
             }
         });
 
@@ -202,18 +212,18 @@ public class GerLabs extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(20, 20, 20)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtIdLab, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtNomeLab, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnPesqLab, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 6, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcLab, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(16, Short.MAX_VALUE)))
         );
         jPanel4Layout.setVerticalGroup(
@@ -227,18 +237,18 @@ public class GerLabs extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdLab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNomeLab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPesqLab, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                     .addContainerGap(338, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcLab, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
 
@@ -317,22 +327,43 @@ public class GerLabs extends javax.swing.JFrame {
 
     private void mnVoltaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnVoltaMouseClicked
         Principal p = new Principal();
-    
-       p.setVisible(true);
-      dispose();
+
+        p.setVisible(true);
+        dispose();
     }//GEN-LAST:event_mnVoltaMouseClicked
 
     private void btnRegarregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegarregaActionPerformed
-
+        labsDAO l = new labsDAO();
+        l.pesquisaAuto();
     }//GEN-LAST:event_btnRegarregaActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void txtIdLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdLabActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_txtIdLabActionPerformed
+
+    private void btnExcLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcLabActionPerformed
+        String id = txtIdLab.getText();
+
+        LabsDTO objDTO = new LabsDTO();
+        objDTO.setIdLab(Integer.parseInt(id));
+
+        labsDAO CDAO = new labsDAO();
+        CDAO.ApagaLab(objDTO);
+    }//GEN-LAST:event_btnExcLabActionPerformed
+
+    private void btnPesqLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqLabActionPerformed
+        String id = txtIdLab.getText();
+
+        LabsDTO objDTO = new LabsDTO();
+        objDTO.setIdLab(Integer.parseInt(id));
+
+        labsDAO CDAO = new labsDAO();
+        CDAO.Procura(objDTO);
+
+        txtNomeLab.setText(objDTO.getNomeLab());
+
+
+    }//GEN-LAST:event_btnPesqLabActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,9 +401,10 @@ public class GerLabs extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegarrega;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    public static javax.swing.JTable TabelaLabs;
+    public static javax.swing.JButton btnExcLab;
+    public static javax.swing.JButton btnPesqLab;
+    public static javax.swing.JButton btnRegarrega;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -386,9 +418,8 @@ public class GerLabs extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    public static javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JMenu mnVolta;
+    public static javax.swing.JTextField txtIdLab;
+    public static javax.swing.JTextField txtNomeLab;
     // End of variables declaration//GEN-END:variables
 }

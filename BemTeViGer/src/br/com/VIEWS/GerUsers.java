@@ -171,6 +171,7 @@ public class GerUsers extends javax.swing.JFrame {
         btnEditar.setForeground(new java.awt.Color(204, 204, 204));
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/editar.png"))); // NOI18N
         btnEditar.setText("Editar");
+        btnEditar.setToolTipText("Editar");
         btnEditar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
         btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -184,6 +185,7 @@ public class GerUsers extends javax.swing.JFrame {
         btnApaga.setForeground(new java.awt.Color(204, 204, 204));
         btnApaga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/excluir.png"))); // NOI18N
         btnApaga.setText("Excluir");
+        btnApaga.setToolTipText("Excluir");
         btnApaga.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
         btnApaga.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnApaga.addActionListener(new java.awt.event.ActionListener() {
@@ -196,6 +198,7 @@ public class GerUsers extends javax.swing.JFrame {
         btnRegarrega.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnRegarrega.setForeground(new java.awt.Color(204, 204, 204));
         btnRegarrega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recarrega.png"))); // NOI18N
+        btnRegarrega.setToolTipText("Atualizar");
         btnRegarrega.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 2));
         btnRegarrega.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegarrega.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +211,8 @@ public class GerUsers extends javax.swing.JFrame {
         btnPesq.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnPesq.setForeground(new java.awt.Color(204, 204, 204));
         btnPesq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.png"))); // NOI18N
-        btnPesq.setText("Procurar");
+        btnPesq.setText("Pesquisar");
+        btnPesq.setToolTipText("Pesquisar");
         btnPesq.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
         btnPesq.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPesq.addActionListener(new java.awt.event.ActionListener() {
@@ -240,7 +244,7 @@ public class GerUsers extends javax.swing.JFrame {
                                         .addComponent(txtTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtNome)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addComponent(btnRegarrega))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
@@ -290,8 +294,8 @@ public class GerUsers extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

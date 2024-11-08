@@ -5,7 +5,8 @@
  */
 package br.com.VIEWS;
 
-import br.com.DAO.LabDAO;
+
+import br.com.DAO.labsDAO;
 import br.com.DTO.LabsDTO;
 
 /**
@@ -143,13 +144,13 @@ public class NovoLab extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisLabActionPerformed
-String  nome_laboratorio =  txtNomeLab.getText();
-  
-LabsDTO CDTO = new LabsDTO();
-CDTO.setNomeLab(nome_laboratorio);
+        String nome_laboratorio = txtNomeLab.getText();
 
-LabDAO UDAO = new LabDAO();
-UDAO.NovoLabs(CDTO); 
+    LabsDTO CDTO = new LabsDTO();
+    CDTO.setNomeLab(nome_laboratorio);
+
+    labsDAO UDAO = new labsDAO();
+    UDAO.NovoLab(CDTO); 
     }//GEN-LAST:event_btnRegisLabActionPerformed
 
 

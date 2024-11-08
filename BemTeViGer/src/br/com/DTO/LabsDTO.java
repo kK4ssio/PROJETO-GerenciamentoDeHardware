@@ -4,6 +4,7 @@ package br.com.DTO;
  * @author Kassio Dias Monteiro
  */
 public class LabsDTO {
+
     private int idLab;
     private String nomeLab;
 

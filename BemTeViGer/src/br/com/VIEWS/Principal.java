@@ -5,9 +5,12 @@
  */
 package br.com.VIEWS;
 
+import br.com.DTO.UsuariosDTO;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.awt.Graphics;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aluno.saolucas
@@ -19,6 +22,11 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        String nomeUsuario = UsuariosDTO.usuarioLogado.getNomeUsu();
+
+        // Exibindo o nome do usuário em um JLabel
+        lblNomeUsuario.setText("Bem-vindo, " + nomeUsuario);
+
     }
 
     /**
@@ -35,6 +43,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        lblNomeUsuario = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -81,6 +91,30 @@ public class Principal extends javax.swing.JFrame {
     jLabel4.setForeground(new java.awt.Color(255, 211, 0));
     jLabel4.setText("Gerenciador de Hardware");
 
+    jPanel5.setBackground(new java.awt.Color(75, 75, 75));
+    jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+
+    lblNomeUsuario.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+    lblNomeUsuario.setForeground(new java.awt.Color(204, 204, 204));
+    lblNomeUsuario.setText("Bem vindo");
+
+    javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+    jPanel5.setLayout(jPanel5Layout);
+    jPanel5Layout.setHorizontalGroup(
+        jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel5Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(lblNomeUsuario)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+    jPanel5Layout.setVerticalGroup(
+        jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+            .addContainerGap(88, Short.MAX_VALUE)
+            .addComponent(lblNomeUsuario)
+            .addContainerGap())
+    );
+
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
     jPanel2Layout.setHorizontalGroup(
@@ -96,6 +130,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                     .addComponent(jLabel3)
                     .addGap(117, 117, 117))))
+        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
     jPanel2Layout.setVerticalGroup(
         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +141,8 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jLabel3)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jLabel4)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
     );
 
     jPanel3.setBackground(new java.awt.Color(255, 255, 236));
@@ -275,39 +311,64 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnLabActionPerformed
-        NovoLab newlab = new NovoLab();
-        newlab.setVisible(true);
-        Desktop.add(newlab);
+        if ("Administrador".equals(UsuariosDTO.usuarioLogado.getTipoUsu()) || "Técnico".equals(UsuariosDTO.usuarioLogado.getTipoUsu())) {
+
+            NovoLab newlab = new NovoLab();
+            newlab.setVisible(true);
+            Desktop.add(newlab);
+        } else {
+            JOptionPane.showMessageDialog(null, "Você não tem permissão para acessar esta tela!");
+        }
+
     }//GEN-LAST:event_mnLabActionPerformed
 
     private void mnEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnEquipActionPerformed
-        NovoEquip newEquip = new NovoEquip();
-        newEquip.setVisible(true);
-        Desktop.add(newEquip);
+        if ("Administrador".equals(UsuariosDTO.usuarioLogado.getTipoUsu()) || "Técnico".equals(UsuariosDTO.usuarioLogado.getTipoUsu())) {
+            NovoEquip newEquip = new NovoEquip();
+            newEquip.setVisible(true);
+            Desktop.add(newEquip);
+        } else {
+            JOptionPane.showMessageDialog(null, "Você não tem permissão para acessar esta tela!");
+        }
     }//GEN-LAST:event_mnEquipActionPerformed
 
     private void mnGerUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnGerUsersActionPerformed
-       GerUsers ngu = new GerUsers();
-       ngu.setVisible(true);
-       setVisible(false);
+
+        if ("Administrador".equals(UsuariosDTO.usuarioLogado.getTipoUsu())) {
+            GerUsers ngu = new GerUsers();
+            ngu.setVisible(true);
+            setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Você não tem permissão para acessar esta tela!");
+        }
     }//GEN-LAST:event_mnGerUsersActionPerformed
 
     private void mnGerLabsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnGerLabsActionPerformed
-      GerLabs labs = new GerLabs();
-        labs.setVisible(true);
-        setVisible(false); 
+        if ("Administrador".equals(UsuariosDTO.usuarioLogado.getTipoUsu()) || "Técnico".equals(UsuariosDTO.usuarioLogado.getTipoUsu())) {
+            GerLabs labs = new GerLabs();
+            labs.setVisible(true);
+            setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Você não tem permissão para acessar esta tela!");
+        }
     }//GEN-LAST:event_mnGerLabsActionPerformed
 
     private void mnGerEquipsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnGerEquipsActionPerformed
-         GerEquips equips = new GerEquips();
-        equips.setVisible(true);
-        setVisible(false); 
+        if ("Administrador".equals(UsuariosDTO.usuarioLogado.getTipoUsu()) || "Técnico".equals(UsuariosDTO.usuarioLogado.getTipoUsu())) {
+            GerEquips equips = new GerEquips();
+            equips.setVisible(true);
+            setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Você não tem permissão para acessar esta tela!");
+        }
     }//GEN-LAST:event_mnGerEquipsActionPerformed
 
     private void mnManunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnManunActionPerformed
+
         GerManuten maq = new GerManuten();
         maq.setVisible(true);
-        setVisible(false); 
+        setVisible(false);
+
     }//GEN-LAST:event_mnManunActionPerformed
 
     /**
@@ -359,6 +420,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel lblNomeUsuario;
     private javax.swing.JMenuItem mnEquip;
     private javax.swing.JMenuItem mnGerEquips;
     private javax.swing.JMenuItem mnGerLabs;

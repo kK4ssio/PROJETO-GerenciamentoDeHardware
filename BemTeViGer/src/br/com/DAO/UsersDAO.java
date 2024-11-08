@@ -20,7 +20,7 @@ public class UsersDAO {
 
     public void NovoUsu(UsuariosDTO objUsuaDTO) {
 
-        String sql = "insert into usuario (nome_usuario, senha_usuario, tipo_usuario) values (?, ?, ?)";
+        String sql = "insert into users (nome_usuario, senha_usuario, tipo_usuario) values (?, ?, ?)";
 
         conexao = ConexaoDAO.conector();
 
@@ -50,7 +50,7 @@ public class UsersDAO {
     }
 
     public void pesquisaAuto() {
-        String sql = "select * from usuario";
+        String sql = "select * from users";
         Connection conexao = ConexaoDAO.conector();
 
         try {
@@ -87,7 +87,7 @@ public class UsersDAO {
     }
 
     public void ApagaUsu(UsuariosDTO objUsuaDTO) {
-        String sql = "delete from usuario where id = ?";
+        String sql = "delete from users where id = ?";
         conexao = ConexaoDAO.conector();
 
         try {
@@ -112,7 +112,7 @@ public class UsersDAO {
 
     public void EditarUsu(UsuariosDTO objUsuaDTO) {
 
-        String sql = "update usuario set nome_usuario = ?, senha_usuario = ?, tipo_usuario = ? where id = ?";
+        String sql = "update users set nome_usuario = ?, senha_usuario = ?, tipo_usuario = ? where id = ?";
         conexao = ConexaoDAO.conector();
 
         try {
@@ -141,7 +141,7 @@ public class UsersDAO {
 
     public void Procura(UsuariosDTO objUsuaDTO) {
 
-        String sql = "select * from usuario where id = ?";
+        String sql = "select * from users where id = ?";
         conexao = ConexaoDAO.conector();
 
         try {

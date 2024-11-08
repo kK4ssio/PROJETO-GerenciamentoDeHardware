@@ -1,9 +1,7 @@
-
-package br.com.DAO;
- 
+import br.com.DAO.ConexaoDAO;
 import br.com.DTO.LabsDTO;
 import java.sql.*;
-import javax.swing.JOptionPane;
+import javax.swing.JOptionPane; 
 import br.com.VIEWS.NovoLab;
 
 /**
@@ -17,7 +15,7 @@ public class LabDAO {
 
 public void NovoLabs(LabsDTO objLabsDTO) {
 
-        String sql = "insert into lab ( nome_laboratorio) values (?)";
+        String sql = "insert into labs ( nome_laboratorio) values (?)";
 
         conexao = ConexaoDAO.conector();
 

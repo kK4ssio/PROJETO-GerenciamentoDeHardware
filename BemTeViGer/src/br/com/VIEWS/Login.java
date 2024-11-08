@@ -9,6 +9,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import br.com.DAO.ConexaoDAO;
 import br.com.DAO.UsersDAO;
+import br.com.DTO.UsuariosDTO;
 
 /**
  *
@@ -17,12 +18,12 @@ import br.com.DAO.UsersDAO;
 public class Login extends javax.swing.JFrame {
 
     
-       Connection conexao = null;
+      Connection conexao = null;
       PreparedStatement pst = null;
       ResultSet rs = null;
     
     public void Logar() {
-        String sql = "select * from usuario where nome_usuario = ? and senha_usuario = ?";
+        String sql = "select * from users where nome_usuario = ? and senha_usuario = ?";
         conexao = ConexaoDAO.conector();
 
         try {
@@ -30,12 +31,23 @@ public class Login extends javax.swing.JFrame {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, txtNomeUsu.getText());
             pst.setString(2, txtSenha.getText());
-            ;
+            
 
             //executar  a query
             rs = pst.executeQuery();
 
             if (rs.next()) {
+                
+                 // Criando um objeto UsuarioDTO com os dados do usuário logado
+            UsuariosDTO usuarioLogado = new UsuariosDTO();
+            usuarioLogado.setId(rs.getInt("id"));
+            usuarioLogado.setNomeUsu(rs.getString("nome_usuario"));
+            usuarioLogado.setSenhaUsu(rs.getString("senha_usuario"));
+            usuarioLogado.setTipoUsu(rs.getString("tipo_usuario"));
+
+            // Armazenando o usuário logado na variável estática
+            UsuariosDTO.usuarioLogado = usuarioLogado;
+                
                 Principal principal = new Principal();
                 principal.setVisible(true);
                 this.dispose();
@@ -45,7 +57,9 @@ public class Login extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "tela Login " + e);
 
+        
         }
+        
     }
         
     public Login() {
@@ -220,6 +234,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         Logar();
+        
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void lblCadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCadasMouseClicked

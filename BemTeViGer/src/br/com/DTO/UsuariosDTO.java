@@ -8,6 +8,8 @@ public class UsuariosDTO {
     private int id;
     private String nomeUsu, SenhaUsu, TipoUsu;
 
+     public static UsuariosDTO usuarioLogado;
+    
     public String getTipoUsu() {
         return TipoUsu;
     }

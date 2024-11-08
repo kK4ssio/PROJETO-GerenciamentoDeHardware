@@ -141,6 +141,7 @@ public class GerEquips extends javax.swing.JFrame {
         btnRegarrega.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnRegarrega.setForeground(new java.awt.Color(204, 204, 204));
         btnRegarrega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recarrega.png"))); // NOI18N
+        btnRegarrega.setToolTipText("Atualizar");
         btnRegarrega.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 2));
         btnRegarrega.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegarrega.addActionListener(new java.awt.event.ActionListener() {
@@ -210,6 +211,7 @@ public class GerEquips extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(204, 204, 204));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/editar.png"))); // NOI18N
         jButton2.setText("Editar");
+        jButton2.setToolTipText("Editar");
         jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -218,6 +220,7 @@ public class GerEquips extends javax.swing.JFrame {
         jButton3.setForeground(new java.awt.Color(204, 204, 204));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/excluir.png"))); // NOI18N
         jButton3.setText("Excluir Equipamento");
+        jButton3.setToolTipText("Excluir Equipamento");
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -231,6 +234,7 @@ public class GerEquips extends javax.swing.JFrame {
         jButton4.setForeground(new java.awt.Color(204, 204, 204));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.png"))); // NOI18N
         jButton4.setText("Pesquisar");
+        jButton4.setToolTipText("Pesquisar");
         jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
