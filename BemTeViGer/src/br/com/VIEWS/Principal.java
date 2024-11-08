@@ -189,7 +189,7 @@ public class Principal extends javax.swing.JFrame {
     );
     DesktopLayout.setVerticalGroup(
         DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 494, Short.MAX_VALUE)
+        .addGap(0, 429, Short.MAX_VALUE)
     );
 
     javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
