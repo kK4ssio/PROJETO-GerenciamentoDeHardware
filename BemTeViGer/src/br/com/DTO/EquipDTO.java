@@ -4,8 +4,8 @@ package br.com.DTO;
  * @author Kassio Dias Monteiro
  */
 public class EquipDTO {
-    private int id, laboratorio;
-    private String tipoEquipamento, status, observacao,identificacao;
+    private int id;
+    private String tipoEquipamento, status, identificacao, labPertencente, observacao;
 
     public int getId() {
         return id;
@@ -13,14 +13,6 @@ public class EquipDTO {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getLaboratorio() {
-        return laboratorio;
-    }
-
-    public void setLaboratorio(int laboratorio) {
-        this.laboratorio = laboratorio;
     }
 
     public String getTipoEquipamento() {
@@ -39,6 +31,22 @@ public class EquipDTO {
         this.status = status;
     }
 
+    public String getIdentificacao() {
+        return identificacao;
+    }
+
+    public void setIdentificacao(String identificacao) {
+        this.identificacao = identificacao;
+    }
+
+    public String getLabPertencente() {
+        return labPertencente;
+    }
+
+    public void setLabPertencente(String labPertencente) {
+        this.labPertencente = labPertencente;
+    }
+
     public String getObservacao() {
         return observacao;
     }
@@ -47,11 +55,5 @@ public class EquipDTO {
         this.observacao = observacao;
     }
 
-    public String getIdentificacao() {
-        return identificacao;
-    }
-
-    public void setIdentificacao(String identificacao) {
-        this.identificacao = identificacao;
-    }
+   
 }
