@@ -33,16 +33,17 @@ nome_laboratorio VARCHAR(100) NOT NULL UNIQUE
 );
 
 
+
 select * from labs;
 
 
-CREATE TABLE equip ( 
+CREATE TABLE equipa ( 
 
 id INT PRIMARY KEY AUTO_INCREMENT,
 
 tipo_equipamento VARCHAR(90) NOT NULL, 
 
-status_equip VARCHAR(50) NOT NULL, 
+status_equip VARCHAR(50), 
 
 identificacao VARCHAR(50) NOT NULL UNIQUE, -- nome da maquina
 
@@ -52,6 +53,8 @@ observacao VARCHAR(100)
 
 
 );
+
+select * from equipa;
 
 CREATE TABLE manun (
 
