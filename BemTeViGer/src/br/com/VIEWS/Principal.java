@@ -92,7 +92,7 @@ public class Principal extends javax.swing.JFrame {
     jLabel4.setText("Gerenciador de Hardware");
 
     jPanel5.setBackground(new java.awt.Color(75, 75, 75));
-    jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+    jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(25, 25, 25), 2));
 
     lblNomeUsuario.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
     lblNomeUsuario.setForeground(new java.awt.Color(204, 204, 204));
@@ -110,7 +110,7 @@ public class Principal extends javax.swing.JFrame {
     jPanel5Layout.setVerticalGroup(
         jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-            .addContainerGap(88, Short.MAX_VALUE)
+            .addContainerGap(73, Short.MAX_VALUE)
             .addComponent(lblNomeUsuario)
             .addContainerGap())
     );

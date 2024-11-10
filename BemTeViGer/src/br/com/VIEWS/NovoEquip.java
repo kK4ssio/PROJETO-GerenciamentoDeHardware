@@ -5,7 +5,12 @@
  */
 package br.com.VIEWS;
 
+import br.com.DAO.EquipsDAO;
+import br.com.DAO.UsersDAO;
+import br.com.DTO.EquipDTO;
+import java.sql.*;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,13 +23,14 @@ public class NovoEquip extends javax.swing.JInternalFrame {
 
     // Método para acessar o JComboBox LabPertencente
     public JComboBox<String> getLabPertencente() {
-        return LabPertencente;
+        return cbLPertencente;
     }
     /**
      * Creates new form NovoEquip
      */
     public NovoEquip() {
         initComponents();
+         chamarDados();
     }
 
     /**
@@ -38,7 +44,7 @@ public class NovoEquip extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnRegisEquip = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -46,12 +52,12 @@ public class NovoEquip extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        txtNomeEquip = new javax.swing.JTextField();
+        txtObs = new javax.swing.JTextField();
+        cbTipoEquip = new javax.swing.JComboBox<>();
+        cbStatus = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        LabPertencente = new javax.swing.JComboBox<>();
+        cbLPertencente = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setTitle("Novo Equipamento");
@@ -60,11 +66,16 @@ public class NovoEquip extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(75, 75, 75));
 
-        jButton1.setBackground(new java.awt.Color(75, 75, 75));
-        jButton1.setForeground(new java.awt.Color(255, 211, 0));
-        jButton1.setText("Registrar Equipamento");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegisEquip.setBackground(new java.awt.Color(75, 75, 75));
+        btnRegisEquip.setForeground(new java.awt.Color(255, 211, 0));
+        btnRegisEquip.setText("Registrar Equipamento");
+        btnRegisEquip.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
+        btnRegisEquip.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegisEquip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisEquipActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/new-equip.png"))); // NOI18N
 
@@ -76,7 +87,7 @@ public class NovoEquip extends javax.swing.JInternalFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegisEquip, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
         jPanel2Layout.setVerticalGroup(
@@ -84,7 +95,7 @@ public class NovoEquip extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRegisEquip, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -112,44 +123,45 @@ public class NovoEquip extends javax.swing.JInternalFrame {
         jLabel6.setForeground(new java.awt.Color(255, 211, 0));
         jLabel6.setText("Registro Equipamentos");
 
-        jTextField1.setBackground(new java.awt.Color(75, 75, 75));
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtNomeEquip.setBackground(new java.awt.Color(75, 75, 75));
+        txtNomeEquip.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtNomeEquip.setForeground(new java.awt.Color(204, 204, 204));
+        txtNomeEquip.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField2.setBackground(new java.awt.Color(75, 75, 75));
-        jTextField2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtObs.setBackground(new java.awt.Color(75, 75, 75));
+        txtObs.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtObs.setForeground(new java.awt.Color(204, 204, 204));
+        txtObs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jComboBox1.setBackground(new java.awt.Color(75, 75, 75));
-        jComboBox1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(204, 204, 204));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PC", "Notebook", "Mouse", "Teclado", "Fonte", "Cabo" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbTipoEquip.setBackground(new java.awt.Color(75, 75, 75));
+        cbTipoEquip.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        cbTipoEquip.setForeground(new java.awt.Color(204, 204, 204));
+        cbTipoEquip.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PC", "Notebook", "Mouse", "Teclado", "Fonte", "Cabo" }));
+        cbTipoEquip.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        cbTipoEquip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbTipoEquipActionPerformed(evt);
             }
         });
 
-        jComboBox2.setBackground(new java.awt.Color(75, 75, 75));
-        jComboBox2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(204, 204, 204));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Em uso", "Em manutenção", "Fora de uso" }));
-        jComboBox2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        cbStatus.setBackground(new java.awt.Color(75, 75, 75));
+        cbStatus.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        cbStatus.setForeground(new java.awt.Color(204, 204, 204));
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Em uso", "Em manutenção", "Fora de uso" }));
+        cbStatus.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(75, 75, 75));
         jLabel7.setText("Identificação");
 
-        LabPertencente.setBackground(new java.awt.Color(75, 75, 75));
-        LabPertencente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        LabPertencente.setForeground(new java.awt.Color(204, 204, 204));
-        LabPertencente.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        LabPertencente.addActionListener(new java.awt.event.ActionListener() {
+        cbLPertencente.setBackground(new java.awt.Color(75, 75, 75));
+        cbLPertencente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        cbLPertencente.setForeground(new java.awt.Color(204, 204, 204));
+        cbLPertencente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sem Laboratório" }));
+        cbLPertencente.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        cbLPertencente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LabPertencenteActionPerformed(evt);
+                cbLPertencenteActionPerformed(evt);
             }
         });
 
@@ -169,14 +181,14 @@ public class NovoEquip extends javax.swing.JInternalFrame {
                             .addComponent(jLabel7))
                         .addGap(69, 69, 69)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, 368, Short.MAX_VALUE)))
+                            .addComponent(txtNomeEquip)
+                            .addComponent(txtObs)
+                            .addComponent(cbTipoEquip, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbStatus, 0, 368, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LabPertencente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(cbLPertencente, 0, 370, Short.MAX_VALUE)))
                 .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -196,24 +208,24 @@ public class NovoEquip extends javax.swing.JInternalFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbTipoEquip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNomeEquip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(LabPertencente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbLPertencente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtObs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -232,20 +244,37 @@ public class NovoEquip extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cbTipoEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoEquipActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cbTipoEquipActionPerformed
 
-    private void LabPertencenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabPertencenteActionPerformed
+    private void cbLPertencenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLPertencenteActionPerformed
        
-    }//GEN-LAST:event_LabPertencenteActionPerformed
+    }//GEN-LAST:event_cbLPertencenteActionPerformed
 
+    private void btnRegisEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisEquipActionPerformed
+        String nome = txtNomeEquip.getText();
+        String tipo = cbTipoEquip.getSelectedItem().toString();
+        String status = cbStatus.getSelectedItem().toString();
+        String lp = cbLPertencente.getSelectedItem().toString();
+        String obs = txtObs.getText();
 
+        EquipDTO DTO = new EquipDTO();
+          DTO.setIdentificacao(nome);
+          DTO.setTipoEquipamento(tipo);
+          DTO. setStatus(status);
+          DTO.setLabPertencente(lp);
+          DTO.setObservacao(obs);
+
+        EquipsDAO DAo = new EquipsDAO();
+        DAo.NovoEquip(DTO);
+    }//GEN-LAST:event_btnRegisEquipActionPerformed
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> LabPertencente;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton btnRegisEquip;
+    public static javax.swing.JComboBox<String> cbLPertencente;
+    public static javax.swing.JComboBox<String> cbStatus;
+    public static javax.swing.JComboBox<String> cbTipoEquip;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -256,7 +285,20 @@ public class NovoEquip extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    public static javax.swing.JTextField txtNomeEquip;
+    public static javax.swing.JTextField txtObs;
     // End of variables declaration//GEN-END:variables
+
+public static void chamarDados() {
+        EquipsDAO maqDAO = new EquipsDAO();
+        ResultSet rs = maqDAO.listarLabins();
+        try {
+        while (rs.next()) {
+            cbLPertencente.addItem(rs.getString(1));
+        }
+    } catch (SQLException erro) {
+        JOptionPane.showMessageDialog(null, "hum2"+ erro.getMessage());
+    }
 }
+}
+

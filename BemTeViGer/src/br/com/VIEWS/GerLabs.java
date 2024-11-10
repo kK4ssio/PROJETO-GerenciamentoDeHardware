@@ -5,9 +5,14 @@
  */
 package br.com.VIEWS;
 
+import br.com.DAO.EquipsDAO;
 import br.com.DAO.UsersDAO;
 import br.com.DAO.labsDAO;
 import br.com.DTO.LabsDTO;
+import static br.com.VIEWS.NovoEquip.cbLPertencente;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +25,7 @@ public class GerLabs extends javax.swing.JFrame {
      */
     public GerLabs() {
         initComponents();
+        chamarDados();
     }
 
     /**
@@ -422,4 +428,16 @@ public class GerLabs extends javax.swing.JFrame {
     public static javax.swing.JTextField txtIdLab;
     public static javax.swing.JTextField txtNomeLab;
     // End of variables declaration//GEN-END:variables
+public static void chamarDados() {
+        EquipsDAO maqDAO = new EquipsDAO();
+        ResultSet rs = maqDAO.listarLabins();
+        try {
+        while (rs.next()) {
+            cbLPertencente.addItem(rs.getString(1));
+        }
+    } catch (SQLException erro) {
+        JOptionPane.showMessageDialog(null, "hum2"+ erro.getMessage());
+    }
+}
+
 }
