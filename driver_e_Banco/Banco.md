@@ -37,7 +37,7 @@ nome_laboratorio VARCHAR(100) NOT NULL UNIQUE
 select * from labs;
 
 
-CREATE TABLE equipa ( 
+CREATE TABLE equipas ( 
 
 id INT PRIMARY KEY AUTO_INCREMENT,
 
@@ -49,24 +49,11 @@ identificacao VARCHAR(50) NOT NULL UNIQUE, -- nome da maquina
 
 lab_pertencete VARCHAR(50),
 
-observacao VARCHAR(100) 
-
-
-);
-
-select * from equipa;
-
-CREATE TABLE manun (
-
-id INT PRIMARY KEY AUTO_INCREMENT,
-
-problema VARCHAR(100),
-
-solucao VARCHAR(100),
-
-FOREIGN KEY (equipamento_id) REFERENCES equipamento(id) ON DELETE SET NULL,
-
-FOREIGN KEY (laboratorio_id) REFERENCES laboratorio(id) ON DELETE SET NULL 
-
+observacao VARCHAR(100),
+solucao VARCHAR(100)
 
 );
+
+select * from equipas;
+
+
