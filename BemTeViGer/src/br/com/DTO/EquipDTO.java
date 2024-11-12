@@ -5,7 +5,15 @@ package br.com.DTO;
  */
 public class EquipDTO {
     private int id;
-    private String tipoEquipamento, status, identificacao, labPertencente, observacao;
+    private String tipoEquipamento, status, identificacao, labPertencente, observacao,solucao;
+
+    public String getSolucao() {
+        return solucao;
+    }
+
+    public void setSolucao(String solucao) {
+        this.solucao = solucao;
+    }
 
     public int getId() {
         return id;

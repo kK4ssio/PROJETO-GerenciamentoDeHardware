@@ -69,7 +69,6 @@ public class Principal extends javax.swing.JFrame {
     mnGerLabs = new javax.swing.JMenuItem();
     mnGerEquips = new javax.swing.JMenuItem();
     mnGerUsers = new javax.swing.JMenuItem();
-    mnManun = new javax.swing.JMenuItem();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     setTitle("Bem-te-vi! Principal");
@@ -283,14 +282,6 @@ public class Principal extends javax.swing.JFrame {
     });
     jMenu2.add(mnGerUsers);
 
-    mnManun.setText("Manutenções");
-    mnManun.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            mnManunActionPerformed(evt);
-        }
-    });
-    jMenu2.add(mnManun);
-
     jMenuBar1.add(jMenu2);
 
     setJMenuBar(jMenuBar1);
@@ -354,22 +345,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnGerLabsActionPerformed
 
     private void mnGerEquipsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnGerEquipsActionPerformed
-        if ("Administrador".equals(UsuariosDTO.usuarioLogado.getTipoUsu()) || "Técnico".equals(UsuariosDTO.usuarioLogado.getTipoUsu())) {
-            GerEquips equips = new GerEquips();
-            equips.setVisible(true);
-            setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "Você não tem permissão para acessar esta tela!");
-        }
-    }//GEN-LAST:event_mnGerEquipsActionPerformed
 
-    private void mnManunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnManunActionPerformed
-
-        GerManuten maq = new GerManuten();
-        maq.setVisible(true);
+        GerEquips equips = new GerEquips();
+        equips.setVisible(true);
         setVisible(false);
 
-    }//GEN-LAST:event_mnManunActionPerformed
+
+    }//GEN-LAST:event_mnGerEquipsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -427,6 +409,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnGerLabs;
     private javax.swing.JMenuItem mnGerUsers;
     private javax.swing.JMenuItem mnLab;
-    private javax.swing.JMenuItem mnManun;
     // End of variables declaration//GEN-END:variables
 }

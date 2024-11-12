@@ -17,7 +17,7 @@ public class EquipsDAO {
     ResultSet rs = null;
 
     public void NovoEquip(EquipDTO eDto) {
-        String sql = "INSERT INTO equipa (tipo_equipamento, status_equip, identificacao, lab_pertencete, observacao ) VALUES ( ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO equipas (tipo_equipamento, status_equip, identificacao, lab_pertencete, observacao, solucao ) VALUES ( ?, ?, ?, ?, ?, ?)";
         conexao = ConexaoDAO.conector();
 
         try {
@@ -27,7 +27,8 @@ public class EquipsDAO {
             pst.setString(3, eDto.getIdentificacao());
             pst.setString(4, eDto.getLabPertencente());
             pst.setString(5, eDto.getObservacao());
-
+            pst.setString(6, eDto.getSolucao());
+            
             System.out.println(pst);
             int add = pst.executeUpdate();
             if (add > 0) {
@@ -57,7 +58,7 @@ public class EquipsDAO {
     }
 
     public void pesquisaAuto() {
-        String sql = "SELECT * FROM equipa";
+        String sql = "SELECT * FROM equipas";
         conexao = ConexaoDAO.conector();
 
         try {
@@ -75,8 +76,9 @@ public class EquipsDAO {
                     String identificacao = rs.getString("identificacao");
                     String labPertencente = rs.getString("lab_pertencete");
                     String observacao = rs.getString("observacao");
+                    String Solucao = rs.getString("solucao");
 
-                    model.addRow(new Object[]{tipo, status, identificacao, labPertencente, observacao, id});
+                    model.addRow(new Object[]{tipo, status, identificacao, labPertencente, observacao, id, Solucao});
                 }
                 rs.close();
                 pst.close();
@@ -88,7 +90,7 @@ public class EquipsDAO {
     }
 
     public void ApagaEquip(EquipDTO eDto) {
-        String sql = "DELETE FROM equipa WHERE id = ?";
+        String sql = "DELETE FROM equipas WHERE id = ?";
         conexao = ConexaoDAO.conector();
 
         try {
@@ -108,7 +110,7 @@ public class EquipsDAO {
     }
 
     public void EditarEquip(EquipDTO eDto) {
-        String sql = "UPDATE equipa SET tipo_equipamento = ?, status_equip = ?, identificacao = ?, lab_pertencete = ?, observacao = ? WHERE id = ?";
+        String sql = "UPDATE equipas SET tipo_equipamento = ?, status_equip = ?, identificacao = ?, lab_pertencete = ?, observacao = ?, solucao = ? WHERE id = ?";
         conexao = ConexaoDAO.conector();
 
         try {
@@ -118,7 +120,8 @@ public class EquipsDAO {
             pst.setString(3, eDto.getIdentificacao());
             pst.setString(4, eDto.getLabPertencente());
             pst.setString(5, eDto.getObservacao());
-            pst.setInt(6, eDto.getId());
+            pst.setString(6, eDto.getSolucao());
+            pst.setInt(7, eDto.getId());
 
             int edit = pst.executeUpdate();
             if (edit > 0) {
@@ -133,7 +136,7 @@ public class EquipsDAO {
     }
 
     public void ProcuraEquip(EquipDTO eDto) {
-        String sql = "SELECT * FROM equipa WHERE id = ?";
+        String sql = "SELECT * FROM equipas WHERE id = ?";
         conexao = ConexaoDAO.conector();
 
         try {
@@ -147,6 +150,7 @@ public class EquipsDAO {
                 eDto.setIdentificacao(rs.getString("identificacao"));
                 eDto.setLabPertencente(rs.getString("lab_pertencete"));
                 eDto.setObservacao(rs.getString("observacao"));
+                eDto.setSolucao(rs.getString("solucao"));
             } else {
                 JOptionPane.showMessageDialog(null, "Equipamento não encontrado.");
             }
