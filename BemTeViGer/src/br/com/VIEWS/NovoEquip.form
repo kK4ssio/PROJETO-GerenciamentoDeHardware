@@ -304,13 +304,17 @@
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
+              <StringArray count="10">
                 <StringItem index="0" value="PC"/>
                 <StringItem index="1" value="Notebook"/>
                 <StringItem index="2" value="Mouse"/>
                 <StringItem index="3" value="Teclado"/>
                 <StringItem index="4" value="Fonte"/>
                 <StringItem index="5" value="Cabo"/>
+                <StringItem index="6" value="HD"/>
+                <StringItem index="7" value="SSD"/>
+                <StringItem index="8" value="RAM"/>
+                <StringItem index="9" value="Monitor"/>
               </StringArray>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

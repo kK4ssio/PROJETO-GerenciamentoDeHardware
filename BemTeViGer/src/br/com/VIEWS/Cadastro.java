@@ -111,7 +111,7 @@ public class Cadastro extends javax.swing.JFrame {
 
         TipoUsu.setBackground(new java.awt.Color(75, 75, 75));
         TipoUsu.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        TipoUsu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Técnico", "Estagiário" }));
+        TipoUsu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Técnico", "Estagiário", "Professor" }));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(75, 75, 75));

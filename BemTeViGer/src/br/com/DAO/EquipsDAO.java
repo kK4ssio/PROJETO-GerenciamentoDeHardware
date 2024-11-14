@@ -28,7 +28,7 @@ public class EquipsDAO {
             pst.setString(4, eDto.getLabPertencente());
             pst.setString(5, eDto.getObservacao());
             pst.setString(6, eDto.getSolucao());
-            
+
             System.out.println(pst);
             int add = pst.executeUpdate();
             if (add > 0) {
@@ -114,6 +114,12 @@ public class EquipsDAO {
         conexao = ConexaoDAO.conector();
 
         try {
+
+            if (eDto.getObservacao() != null && !eDto.getObservacao().isEmpty() && eDto.getSolucao() != null && !eDto.getSolucao().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Os campos Observação e Solução não podem estar preenchidos ao mesmo tempo.");
+                return; 
+            }
+
             pst = conexao.prepareStatement(sql);
             pst.setString(1, eDto.getTipoEquipamento());
             pst.setString(2, eDto.getStatus());
@@ -128,8 +134,10 @@ public class EquipsDAO {
                 pesquisaAuto();
                 JOptionPane.showMessageDialog(null, "Equipamento editado com sucesso!");
             }
+
             pst.close();
             conexao.close();
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao editar: " + e.getMessage());
         }

@@ -136,7 +136,7 @@ public class NovoEquip extends javax.swing.JInternalFrame {
         cbTipoEquip.setBackground(new java.awt.Color(75, 75, 75));
         cbTipoEquip.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         cbTipoEquip.setForeground(new java.awt.Color(204, 204, 204));
-        cbTipoEquip.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PC", "Notebook", "Mouse", "Teclado", "Fonte", "Cabo" }));
+        cbTipoEquip.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PC", "Notebook", "Mouse", "Teclado", "Fonte", "Cabo", "HD", "SSD", "RAM", "Monitor" }));
         cbTipoEquip.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         cbTipoEquip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

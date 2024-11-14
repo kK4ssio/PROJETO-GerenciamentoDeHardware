@@ -517,6 +517,8 @@ public class GerEquips extends javax.swing.JFrame {
 
         EquipsDAO equipsDAO = new EquipsDAO();
         equipsDAO.EditarEquip(equipDTO);
+        
+      
     }//GEN-LAST:event_btnEditActionPerformed
 
     /**

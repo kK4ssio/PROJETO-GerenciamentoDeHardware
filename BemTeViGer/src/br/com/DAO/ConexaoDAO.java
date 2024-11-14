@@ -15,7 +15,7 @@ public class ConexaoDAO {
 
         String url = "jdbc:mysql://localhost:3306/bemtivi";
         String user = "root";
-        String password = "code45455";
+        String password = "root";
 
         try {
             Class.forName(driver);

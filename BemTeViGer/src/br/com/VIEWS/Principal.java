@@ -302,7 +302,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnLabActionPerformed
-        if ("Administrador".equals(UsuariosDTO.usuarioLogado.getTipoUsu()) || "Técnico".equals(UsuariosDTO.usuarioLogado.getTipoUsu())) {
+        if ("Administrador".equals(UsuariosDTO.usuarioLogado.getTipoUsu()) || "Técnico".equals(UsuariosDTO.usuarioLogado.getTipoUsu()) || "Professor".equals(UsuariosDTO.usuarioLogado.getTipoUsu())) {
 
             NovoLab newlab = new NovoLab();
             newlab.setVisible(true);
@@ -314,7 +314,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnLabActionPerformed
 
     private void mnEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnEquipActionPerformed
-        if ("Administrador".equals(UsuariosDTO.usuarioLogado.getTipoUsu()) || "Técnico".equals(UsuariosDTO.usuarioLogado.getTipoUsu())) {
+        if ("Administrador".equals(UsuariosDTO.usuarioLogado.getTipoUsu()) || "Técnico".equals(UsuariosDTO.usuarioLogado.getTipoUsu()) || "Professor".equals(UsuariosDTO.usuarioLogado.getTipoUsu())) {
             NovoEquip newEquip = new NovoEquip();
             newEquip.setVisible(true);
             Desktop.add(newEquip);
@@ -335,7 +335,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnGerUsersActionPerformed
 
     private void mnGerLabsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnGerLabsActionPerformed
-        if ("Administrador".equals(UsuariosDTO.usuarioLogado.getTipoUsu()) || "Técnico".equals(UsuariosDTO.usuarioLogado.getTipoUsu())) {
+        if ("Administrador".equals(UsuariosDTO.usuarioLogado.getTipoUsu()) || "Técnico".equals(UsuariosDTO.usuarioLogado.getTipoUsu()) || "Professor".equals(UsuariosDTO.usuarioLogado.getTipoUsu())) {
             GerLabs labs = new GerLabs();
             labs.setVisible(true);
             setVisible(false);
