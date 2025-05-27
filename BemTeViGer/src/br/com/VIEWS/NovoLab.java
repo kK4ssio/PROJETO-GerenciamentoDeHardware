@@ -9,6 +9,7 @@ package br.com.VIEWS;
 import br.com.DAO.labsDAO;
 import br.com.DTO.LabsDTO;
 
+
 /**
  *
  * @author aluno.saolucas
@@ -20,6 +21,8 @@ public class NovoLab extends javax.swing.JInternalFrame {
      */
     public NovoLab() {
         initComponents();
+        
+    
     }
 
     /**
@@ -43,15 +46,15 @@ public class NovoLab extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Novo Laboratório");
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 236));
+        jPanel1.setBackground(new java.awt.Color(250, 239, 218));
 
-        jPanel2.setBackground(new java.awt.Color(75, 75, 75));
+        jPanel2.setBackground(new java.awt.Color(22, 33, 41));
 
-        btnRegisLab.setBackground(new java.awt.Color(75, 75, 75));
+        btnRegisLab.setBackground(new java.awt.Color(22, 33, 41));
         btnRegisLab.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnRegisLab.setForeground(new java.awt.Color(255, 211, 0));
+        btnRegisLab.setForeground(new java.awt.Color(255, 255, 255));
         btnRegisLab.setText("Registrar Laboratório");
-        btnRegisLab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 75, 75), 4));
+        btnRegisLab.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnRegisLab.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegisLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,7 +62,7 @@ public class NovoLab extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/new-lab.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Lab.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -68,7 +71,7 @@ public class NovoLab extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 322, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
                 .addComponent(btnRegisLab, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -82,50 +85,52 @@ public class NovoLab extends javax.swing.JInternalFrame {
                 .addGap(16, 16, 16))
         );
 
-        jLabel1.setFont(new java.awt.Font("Artifakt Element Black", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 211, 0));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(22, 33, 41));
         jLabel1.setText("Registro de Laboratórios");
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(75, 75, 75));
-        jLabel2.setText("Nome da sala");
+        jLabel2.setForeground(new java.awt.Color(22, 33, 41));
+        jLabel2.setText("Registre o nome da sala:");
 
-        txtNomeLab.setBackground(new java.awt.Color(75, 75, 75));
+        txtNomeLab.setBackground(new java.awt.Color(22, 33, 41));
         txtNomeLab.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtNomeLab.setForeground(new java.awt.Color(204, 204, 204));
+        txtNomeLab.setForeground(new java.awt.Color(255, 255, 255));
         txtNomeLab.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jSeparator1.setBackground(new java.awt.Color(250, 239, 218));
+        jSeparator1.setForeground(new java.awt.Color(239, 224, 194));
+        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 224, 194), 5));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNomeLab)))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(185, 185, 185)
-                .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNomeLab, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(104, 104, 104)
+                .addGap(137, 137, 137)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtNomeLab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                    .addComponent(txtNomeLab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 

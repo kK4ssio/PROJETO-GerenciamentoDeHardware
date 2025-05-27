@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/SGT%20DENER/Desktop/PROJETO-GerenciamentoDeHardware/BemTeViGer/src/br/com/DTO/EquipDTO.java</file>
-            <file>file:/C:/Users/SGT%20DENER/Desktop/PROJETO-GerenciamentoDeHardware/BemTeViGer/src/br/com/VIEWS/GerEquips.java</file>
-            <file>file:/C:/Users/SGT%20DENER/Desktop/PROJETO-GerenciamentoDeHardware/BemTeViGer/src/br/com/VIEWS/Principal.java</file>
-            <file>file:/C:/Users/SGT%20DENER/Desktop/PROJETO-GerenciamentoDeHardware/BemTeViGer/src/br/com/DAO/EquipsDAO.java</file>
+            <file>file:/C:/Users/SGT%20DENER/Desktop/PROJETO-GerenciamentoDeHardware/BemTeViGer/src/br/com/VIEWS/NovoEquip.java</file>
+            <file>file:/C:/Users/SGT%20DENER/Desktop/PROJETO-GerenciamentoDeHardware/BemTeViGer/src/br/com/VIEWS/NovoLab.java</file>
+            <file>file:/C:/Users/SGT%20DENER/Desktop/PROJETO-GerenciamentoDeHardware/BemTeViGer/src/br/com/VIEWS/Login.java</file>
         </group>
     </open-files>
 </project-private>
